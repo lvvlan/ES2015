@@ -20,6 +20,15 @@
 
     //通常情况下，定义了默认值的参数，应该是函数的尾参数。因为这样比较容易看出来，到底省略了哪些参数。如果非尾部的参数设置默认值，实际上这个参数是没法省略的。
 
+    function foo1(json = {x: 0, y: 5}) {
+        console.log(`json是 => ${json.x}, ${json.y}`);
+    }
+
+    foo1();
+    foo1({y: 3});
+    foo1({x: -1, y: 1});
+    foo1({x: 'a'});
+
     //利用函数参数默认值 可以指定某一参数不能省略
     function throwIfMissing(){
         throw new Error('Missing parameter!');

@@ -73,6 +73,12 @@
 
 	        //通常情况下，定义了默认值的参数，应该是函数的尾参数。因为这样比较容易看出来，到底省略了哪些参数。如果非尾部的参数设置默认值，实际上这个参数是没法省略的。
 
+	        var foo1 = function foo1() {
+	            var json = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { x: 0, y: 5 };
+
+	            console.log('json\u662F => ' + json.x + ', ' + json.y);
+	        };
+
 	        //利用函数参数默认值 可以指定某一参数不能省略
 	        var throwIfMissing = function throwIfMissing() {
 	            throw new Error('Missing parameter!');
@@ -90,6 +96,11 @@
 	        foo({}); // undefined, 5
 	        foo({ x: 1 }); // 1, 5
 	        foo({ x: 1, y: 2 });
+
+	        foo1();
+	        foo1({ y: 3 });
+	        foo1({ x: -1, y: 1 });
+	        foo1({ x: 'a' });
 	    })();
 	}
 
